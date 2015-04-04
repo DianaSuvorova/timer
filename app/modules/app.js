@@ -1,0 +1,1 @@
+var App = module.exports = {}; // namespace
