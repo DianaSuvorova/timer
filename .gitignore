@@ -8,4 +8,4 @@
 !/docs/docs.js
 /components/
 /.grunt/
-/build/react/
+app/build/react/
