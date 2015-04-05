@@ -1,10 +1,25 @@
 // Ayasdi Inc. Copyright 2014 - all rights reserved.
 
+var vendorJs = ['components/js/react-with-addons.js',
+                'components/js/jquery-2.1.1.min.js'];
+
 module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    shell: {
-      js: {command: 'duo app/build/build.js > dist/build.js --no-cache'}
+    react: {
+      files: {
+        expand: true,
+        cwd: 'app/modules',
+        src: ['**/*.jsx'],
+        dest: 'app/build/react/',
+        ext: '.js'
+      }
+    },
+    concat: {
+      js:{
+        src: [vendorJs, 'app/build/react/global/*.js', 'app/build/react/**!(global)/*.js'],
+        dest: 'dist/build.js'
+      }
     },
     sass: {
       dist: {
@@ -18,9 +33,13 @@ module.exports = function (grunt) {
       }
     },
     watch: {
+      react: {
+        files: ['app/modules/**/*.jsx'],
+        tasks: ['react'],
+      },
       js: {
-        files: ['app/modules/**/*.js', 'app/build/build.js', 'app/modules/**/*.html'],
-        tasks: ['shell:js'],
+        files: ['app/build/react/**/*.js'],
+        tasks: ['concat'],
       },
       css: {
         files: ['app/modules/**/*.scss'],
@@ -54,9 +73,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-env');
   grunt.loadNpmTasks('grunt-preprocess');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-react');
 
-  grunt.registerTask('app', ['shell', 'sass', 'concurrent:app']);
+  grunt.registerTask('app', ['react', 'concat', 'sass', 'concurrent:app']);
 };

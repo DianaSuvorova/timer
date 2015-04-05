@@ -1,1 +1,1 @@
-App = require('../modules/app.js');
+App = require('../modules/timer.js');
