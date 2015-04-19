@@ -2,7 +2,7 @@ Timer.Views.CountDown = React.createClass({
   //TODO : request animation frame for countdown?
 
   getInitialState: function () {
-    return {countDown: 134};
+    return {countDown: 134, count: false};
   },
 
   formatCountDown: function (countDown) {
@@ -17,18 +17,33 @@ Timer.Views.CountDown = React.createClass({
     else return null;
   }, 
 
-  everySecond: function () {
-    if (this.state.countDown > 0) {
+  everySecond: function (count) {
+    if (this.state.countDown > 0 && (this.state.count || count)) {
       this.setState({countDown: this.state.countDown-1});
       setTimeout(this.everySecond, 1000);
     }
   },
 
-  componentDidMount: function () {
-    this.everySecond();
+  onClickPause: function () {
+    this.setState({count: false});
   },
-  
+
+  onClickStart: function () {
+    this.setState({count: true});
+    this.everySecond(true);
+  },
+
   render: function () {
+    var pauseClass = classNames({
+      'pause': true,
+      'active': this.state.count
+    });
+
+    var startClass = classNames({
+      'start': true,
+      'active': !this.state.count
+    });
+
     var formattedTime = this.formatCountDown(this.state.countDown);
     return (
       <div className = 'countDown'>
@@ -81,8 +96,8 @@ Timer.Views.CountDown = React.createClass({
         </div>
 
       <div className = 'tools'>
-        <div className = 'pause'>Pause<i className="fa fa-long-arrow-right"></i></div>
-        <div className = 'start'>Start<i className="fa fa-long-arrow-right"></i></div>  
+        <div className = {pauseClass} onClick = {this.onClickPause}>Pause<i className="fa fa-long-arrow-right"></i></div>
+        <div className = {startClass} onClick = {this.onClickStart}>Start<i className="fa fa-long-arrow-right"></i></div>  
       </div>
       
       </div>
