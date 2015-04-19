@@ -1,9 +1,10 @@
 div#countDown {
+  width: $unit * 12; 
   div.header {
    height: calc(#{$line-height} + 3px);
    & > div {
       width: $unit * 2;
-      float: left;
+      display: inline-block;
       margin-right: $unit;
       border-bottom: $border-bold;
     }
@@ -45,8 +46,8 @@ div#countDown {
     }
   }
   & > div.tools {
+    width: 100%;
     height: $line-height;
-    width: $unit * 8; 
     margin-left: $unit * 6;
     margin-top: $unit / 2; 
     & > div {

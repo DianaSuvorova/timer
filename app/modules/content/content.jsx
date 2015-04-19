@@ -8,6 +8,6 @@ Timer.Views.Content = React.createClass({
     var countDown = <Timer.Views.CountDown/>
     var routines = <Timer.Views.Routines/>
     var content =  (this.props.currentPageTimer) ? countDown : routines;
-    return <div id = 'content' className = {contentClass}> {content} </div>;
+    return <div id = 'content' className = {contentClass}>{content}</div>;
   }
 });
