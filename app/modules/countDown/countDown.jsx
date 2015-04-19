@@ -52,7 +52,7 @@ Timer.Views.CountDown = React.createClass({
 
     var formattedTime = this.formatCountDown(this.state.countDown);
     return (
-      <div className = 'countDown'>
+      <div id = 'countDown'>
         
         <div className = 'header'>
           <div>Hours</div>

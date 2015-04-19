@@ -1,4 +1,4 @@
-div.countDown {
+div#countDown {
   div.header {
    height: calc(#{$line-height} + 3px);
    & > div {
