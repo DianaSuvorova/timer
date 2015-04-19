@@ -79,6 +79,11 @@ Timer.Views.CountDown = React.createClass({
           </div> 
         
         </div>
+
+      <div className = 'tools'>
+        <div className = 'pause'>Pause<i className="fa fa-long-arrow-right"></i></div>
+        <div className = 'start'>Start<i className="fa fa-long-arrow-right"></i></div>  
+      </div>
       
       </div>
     );

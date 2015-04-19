@@ -43,4 +43,20 @@ div.countDown {
       text-align: center;
     }
   }
+  & > div.tools {
+    height: $line-height;
+    width: $unit * 8; 
+    margin-left: $unit * 6;
+    margin-top: $unit / 2; 
+    & > div { 
+      width: $unit * 1.5;
+      margin-right: $unit / 2; 
+      display: inline-block;
+      border-top: $border-bold;
+      .fa {
+        padding-left: 5px;
+        color: red;
+      }
+    }
+  }
 }
