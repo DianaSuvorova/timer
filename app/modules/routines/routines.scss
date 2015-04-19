@@ -1,4 +1,30 @@
 div#routines {
-  background-color: black;
-  color: white;
+  width: 100%;
+  height: 100%;
+  & > div {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    &.navigation {
+      width:$unit;
+      & > div {
+        position: absolute;
+        top: calc(50% - #{$fontSize-large / 2});
+        line-height: $fontSize-large;
+        .fa {font-size: $fontSize-large;}
+      }
+    }
+    &.content {
+      width: calc( 100% - #{$unit * 2}); 
+      & > div {
+        font-size: $fontSize-large;
+        line-height: $fontSize-large * 1.5;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: $unit;
+        text-align: center;
+      }
+    }
+  }
 }

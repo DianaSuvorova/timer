@@ -3,7 +3,7 @@ div#content {
   width: 100%;
   height: calc(100% - #{$unit * 2.5});
   margin: $unit * 2.5 0 0;
-  padding-left: $unit;
+  padding: 0 $unit;
   &.dark {
     background-color: black;
     color: white;
