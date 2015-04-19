@@ -1,21 +1,34 @@
+//div.profile {text-align: right;float: right;div { padding-left: $unit / 1.5;border-bottom: $border;margin: $unit-small $unit;}}
 
 div.navbar {
   position: fixed;
   width: 100%;
   height: $unit * 2.5;
-  div.routines, div.timer { 
+  div.routines, div.timer {
+    cursor: pointer;
     float: left;
-    border-bottom: $border;
     margin: $unit-small $unit;
     padding-right: $unit / 1.5;
-  } 
-  div.profile{
-    text-align: right;
-    float: right;
-    div { 
-      padding-left: $unit / 1.5;
+  }
+  &.light {
+    div.timer {
+      color: black;
       border-bottom: $border;
-      margin: $unit-small $unit;
+    } 
+    div.routines {
+      border-bottom: $border-lightgray;
+      color: lightgray;
+    }
+  }
+  &.dark {
+    background-color: black;
+    div.timer {
+      border-bottom: $border-lightgray;
+      color: lightgray;
+    } 
+    div.routines {
+      color: white;
+      border-bottom: $border-white;
     }
   }
 }

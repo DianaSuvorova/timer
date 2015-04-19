@@ -1,7 +1,9 @@
 $unit: 4rem;
-$unit_large: 10rem;
-$unit_small: 1rem;
+$unit-large: 10rem;
+$unit-small: 1rem;
 $border: 1px solid black;
+$border-lightgray: 1px solid lightgray;
+$border-white: 1px solid white;
 $border-bold: 3px solid black;
 $border-bold-lightgray: 3px solid lightgray;
 $line-height: $unit_small * 3;

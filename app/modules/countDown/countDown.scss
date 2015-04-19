@@ -14,7 +14,7 @@ div.countDown {
       text-align: center;
       width: $unit * 2;
       float: left;
-      margin: $unit_small 0;
+      margin: $unit-small 0;
       div.tools {
         width: $unit;
         float: right;
@@ -38,7 +38,7 @@ div.countDown {
     }
     & > div.semicolon {
       float: left;
-      margin: $unit_small 0;
+      margin: $unit-small 0;
       width: $unit;
       font-size: $fontSize-large;
       text-align: center;
