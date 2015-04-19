@@ -15,6 +15,14 @@ module.exports = function (grunt) {
         ext: '.js'
       }
     },
+    copy: {
+      asstes: {
+        expand: true,
+        cwd: 'components/fonts/font-awesome-4.3.0/fonts',
+        src: '**',
+        dest: 'dist/assets/fonts'
+      }
+    },
     concat: {
       js:{
         src: [vendorJs, 'app/build/react/global/*.js', 'app/build/react/**!(global)/*.js'],
@@ -77,4 +85,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-react');
 
   grunt.registerTask('app', ['react', 'concat', 'sass', 'concurrent:app']);
+  grunt.registerTask('build', ['copy', 'react', 'concat', 'sass', 'concurrent:app']);
+
 };

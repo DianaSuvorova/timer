@@ -13,6 +13,4 @@ app.configure(function () {
   app.use(app.router);
 });
 
-app.get('*', function (req, res) { res.sendfile('dist/index.html'); });
-
 http.createServer(app).listen(port, function () { console.log('web server listening on port ' + port); });
