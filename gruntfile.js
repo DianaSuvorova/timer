@@ -1,7 +1,8 @@
 // Ayasdi Inc. Copyright 2014 - all rights reserved.
 
 var vendorJs = ['components/js/react-with-addons.js',
-                'components/js/jquery-2.1.1.min.js'];
+                'components/js/jquery-2.1.1.min.js',
+                'components/js/classnames.js'];
 
 module.exports = function (grunt) {
   grunt.initConfig({
