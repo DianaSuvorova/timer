@@ -27,6 +27,7 @@ div.countDown {
       div.hour, div.min, div.sec {
         float: left;
         width: $unit * 2 - $unit;
+        span.zero {color: lightgray;}
       }
       div.hour, div.min { font-size: $fontSize-large; }
       div.sec{
