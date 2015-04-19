@@ -1,0 +1,6 @@
+div.content {
+  position: fixed;
+  width: 100%;
+  height: calc(100% - #{$unit * 2.5});
+  margin: $unit * 2.5 $unit 0;
+}

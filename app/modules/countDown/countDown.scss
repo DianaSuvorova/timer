@@ -1,0 +1,45 @@
+div.countDown {
+  div.header {
+   height: calc(#{$line-height} + 3px);
+   & > div {
+      width: $unit * 2;
+      float: left;
+      margin-right: $unit;
+      border-bottom: $border-bold;
+    }
+  }
+  div.value {
+    height: $line-height * 2;
+    div.digit {
+      text-align: center;
+      width: $unit * 2;
+      float: left;
+      margin: $unit_small 0;
+      div.tools {
+        width: $unit;
+        float: right;
+        & > div {
+          color: red;
+          font-size: $fontSize-medium;
+          line-height: $fontSize-large / 2;
+        }
+      }
+      div.hour, div.min, div.sec {
+        float: left;
+        width: $unit * 2 - $unit;
+      }
+      div.hour, div.min { font-size: $fontSize-large; }
+      div.sec{
+        margin :  (($fontSize-large - $fontSize-medium) / 4 ) 0;
+        font-size: $fontSize-medium;
+      }
+    }
+    & > div.semicolon {
+      float: left;
+      margin: $unit_small 0;
+      width: $unit;
+      font-size: $fontSize-large;
+      text-align: center;
+    }
+  }
+}

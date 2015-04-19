@@ -1,0 +1,21 @@
+
+div.navbar {
+  position: fixed;
+  width: 100%;
+  height: $unit * 2.5;
+  div.routines, div.timer { 
+    float: left;
+    border-bottom: $border;
+    margin: $unit-small $unit;
+    padding-right: $unit / 1.5;
+  } 
+  div.profile{
+    text-align: right;
+    float: right;
+    div { 
+      padding-left: $unit / 1.5;
+      border-bottom: $border;
+      margin: $unit-small $unit;
+    }
+  }
+}

@@ -23,6 +23,48 @@ Timer.Views.CountDown = React.createClass({
   
   render: function () {
     var formattedTime = this.formatCountDown(this.state.countDown);
-    return <div>  {formattedTime[0]} : {formattedTime[1]} : {formattedTime[2]} </div>;
+    return (
+      <div className = 'countDown'>
+        
+        <div className = 'header'>
+          <div> Hours </div>
+          <div> Minutes </div>
+          <div> Seconds </div>
+        </div>
+
+        <div className = 'value'>
+          
+          <div className = 'digit'>
+            <div className = 'hour'>  {formattedTime[0]} </div>
+            <div className = 'tools'>
+              <div>+</div>
+              <div>-</div>
+            </div>
+          </div>
+          
+          <div className = 'semicolon'>:</div>
+          
+          <div className = 'digit'>
+            <div className = 'min'> {formattedTime[1]} </div>
+            <div className = 'tools'>
+              <div>+</div>
+              <div>-</div>
+            </div>
+          </div> 
+          
+          <div className = 'semicolon'>:</div> 
+          
+          <div className = 'digit'>
+            <div className = 'sec'> {formattedTime[2]}</div>
+            <div className = 'tools'>
+              <div>+</div>
+              <div>-</div>
+            </div>
+          </div> 
+        
+        </div>
+      
+      </div>
+    );
   }
 });

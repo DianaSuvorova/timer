@@ -1,0 +1,28 @@
+$unit: 4rem;
+$unit_large: 10rem;
+$unit_small: 1rem;
+$border: 1px solid black;
+$border-bold: 3px solid black;
+$line-height: $unit_small * 3;
+$fontSize-large: 3rem;
+$fontSize-medium: 2rem;
+
+body {
+  width: 100%;
+  height: 100%;
+  line-height: $line-height;
+}
+
+.item-1 {
+  @extend .col-md-1;
+  @extend .col-xs-6;
+  @extend .hidden-xs;
+  @extend .hidden-sm;
+}
+
+.item-2 {
+  @extend .col-md-2;
+  @extend .col-xs-6;
+  @extend .hidden-xs;
+  @extend .hidden-sm;
+}
