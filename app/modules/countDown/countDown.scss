@@ -19,6 +19,7 @@ div.countDown {
         width: $unit;
         float: right;
         & > div {
+          cursor: pointer;
           color: red;
           font-size: $fontSize-medium;
           line-height: $fontSize-large / 2;

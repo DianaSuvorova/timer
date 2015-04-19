@@ -2,13 +2,13 @@ Timer.Views.CountDown = React.createClass({
   //TODO : request animation frame for countdown?
 
   getInitialState: function () {
-    return {countDown: 134, count: false};
+    return {countDown: 134, count: false, changed: false};
   },
 
-  formatCountDown: function (countDown) {
-    var sec = countDown % 60;
-    var min = Math.floor(countDown / 60);
+  formatCountDown: function (countDown) {    
     var hr = Math.floor(countDown / 3600);
+    var min = Math.floor((countDown - (hr * 3600)) / 60);
+    var sec = countDown % 60;
     return [hr, min, sec]
   }, 
 
@@ -18,10 +18,16 @@ Timer.Views.CountDown = React.createClass({
   }, 
 
   everySecond: function (count) {
-    if (this.state.countDown > 0 && (this.state.count || count)) {
+    if (this.state.countDown > 0 && (count || this.state.count) && !this.state.changed) {
       this.setState({countDown: this.state.countDown-1});
       setTimeout(this.everySecond, 1000);
     }
+  },
+
+  addSecs: function (secs) {
+    this.setState({changed: true});
+    this.setState({countDown: Math.max(Math.min(this.state.countDown + secs, 359999), 0)}); //between 99:59:59 and 0;
+    this.setState({changed: false});
   },
 
   onClickPause: function () {
@@ -62,8 +68,8 @@ Timer.Views.CountDown = React.createClass({
               <span>{formattedTime[0]}</span>
             </div>
             <div className = 'tools'>
-              <div>+</div>
-              <div>-</div>
+              <div onClick={function (){ this.addSecs(3600); }.bind(this)}>+</div>
+              <div onClick={function (){ this.addSecs(-3600); }.bind(this)}>-</div>
             </div>
           </div>
           
@@ -75,8 +81,8 @@ Timer.Views.CountDown = React.createClass({
              <span>{formattedTime[1]}</span>
             </div>
             <div className = 'tools'>
-              <div>+</div>
-              <div>-</div>
+              <div onClick={function (){ this.addSecs(60); }.bind(this)}>+</div>
+              <div onClick={function (){ this.addSecs(-60); }.bind(this)}>-</div>
             </div>
           </div> 
           
@@ -88,8 +94,8 @@ Timer.Views.CountDown = React.createClass({
               <span>{formattedTime[2]}</span>
             </div>
             <div className = 'tools'>
-              <div>+</div>
-              <div>-</div>
+              <div onClick={function (){ this.addSecs(1); }.bind(this)}>+</div>
+              <div onClick={function (){ this.addSecs(-1); }.bind(this)}>-</div>
             </div>
           </div> 
         
