@@ -72,6 +72,20 @@ module.exports = function (grunt) {
         options: {logConcurrentOutput: true}
       }
     },
+    cssmin: {
+      combine: {
+        files: {'dist/build.css': ['dist/build.css']}
+      }
+    },
+   uglify: {
+      options: {
+        mangle: true,
+        compress: true,
+      },
+      target: {
+        files: {'dist/build.js': ['dist/build.js']}
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-concurrent');
@@ -83,9 +97,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-preprocess');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-react');
 
   grunt.registerTask('app', ['react', 'concat', 'sass', 'concurrent:app']);
-  grunt.registerTask('build', ['copy', 'react', 'concat', 'sass', 'concurrent:app']);
+  grunt.registerTask('build', ['copy', 'react', 'concat', 'sass', 'cssmin', 'uglify']);
 
 };
