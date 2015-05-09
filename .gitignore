@@ -6,7 +6,6 @@
 !/dist/index.html
 /docs/*
 !/docs/docs.js
-/components/
 /.grunt/
 app/build/react/
 /Timer/
