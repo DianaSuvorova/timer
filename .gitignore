@@ -8,5 +8,6 @@
 !/docs/docs.js
 /components/
 /.grunt/
+npm-debug.log
 app/build/react/
 /Timer/
