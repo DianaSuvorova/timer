@@ -1,4 +1,4 @@
-Timer.Views.Navbar = React.createClass({
+var navbar = React.createClass({
   //When profile is needed <div className = 'profile' ><div>Sign In</div><div>Register</div></div>
 
   render: function () {
@@ -15,3 +15,5 @@ Timer.Views.Navbar = React.createClass({
     );
   }
 });
+
+module.exports =  navbar;

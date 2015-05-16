@@ -1,4 +1,4 @@
-Timer.Views.CountDown = React.createClass({
+var countdown = React.createClass({
   //TODO : request animation frame for countdown?
 
   getInitialState: function () {
@@ -110,3 +110,5 @@ Timer.Views.CountDown = React.createClass({
     );
   }
 });
+
+module.exports = countdown;

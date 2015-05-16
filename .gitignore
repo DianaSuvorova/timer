@@ -3,9 +3,6 @@
 /node_modules/
 /.sass-cache/
 /dist/*
-!/dist/index.html
-/docs/*
-!/docs/docs.js
-/.grunt/
+npm-debug.log
 app/build/react/
 /Timer/
