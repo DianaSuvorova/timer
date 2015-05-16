@@ -1,31 +1,6 @@
-$unit: 4rem;
-$unit-large: 10rem;
-$unit-small: 1rem;
-$border: 1px solid black;
-$border-lightgray: 1px solid lightgray;
-$border-white: 1px solid white;
-$border-bold: 3px solid black;
-$border-bold-lightgray: 3px solid lightgray;
-$line-height: $unit_small * 3;
-$fontSize-large: 3rem;
-$fontSize-medium: 2rem;
-
-body {
-  width: 100%;
-  height: 100%;
-  line-height: $line-height;
-}
-
-.item-1 {
-  @extend .col-md-1;
-  @extend .col-xs-6;
-  @extend .hidden-xs;
-  @extend .hidden-sm;
-}
-
-.item-2 {
-  @extend .col-md-2;
-  @extend .col-xs-6;
-  @extend .hidden-xs;
-  @extend .hidden-sm;
-}
+@import "../../../node_modules/font-awesome/scss/font-awesome.scss";
+@import "global.scss";
+@import "../navbar/navbar.scss";
+@import "../content/content.scss";
+@import "../countDown/countDown.scss";
+@import "../routines/routines.scss";
