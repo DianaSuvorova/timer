@@ -4,4 +4,5 @@
 /.sass-cache/
 /dist/*
 npm-debug.log
+app/build/react/
 /Timer/
