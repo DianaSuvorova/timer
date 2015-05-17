@@ -61,7 +61,7 @@ gulp.task('js', function() {
 
 gulp.task('watch', function() {
   gulp.watch(path.HTML, ['copyHTML']);
-  gulp.watch('./app/modules/app/*.scss', ['css']);
+  gulp.watch('./app/modules/**/*.scss', ['css']);
 
   return watchify(preprocessJS).on('update', function () {
     preprocessJS.bundle()

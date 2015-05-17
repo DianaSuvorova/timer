@@ -15,15 +15,15 @@ div#countDown {
       text-align: center;
       width: $unit * 2;
       float: left;
-      margin: $unit-small 0;
+      margin: $unit / 4 0;
       div.tools {
+        margin: $unit / 8 0;
         width: $unit;
         float: right;
         & > div {
           cursor: pointer;
           color: red;
-          font-size: $fontSize-medium;
-          line-height: $fontSize-large / 2;
+          line-height: $fontSize-medium / 2;
         }
       }
       div.hour, div.min, div.sec {
@@ -31,17 +31,16 @@ div#countDown {
         width: $unit * 2 - $unit;
         span.zero {color: lightgray;}
       }
-      div.hour, div.min { font-size: $fontSize-large; }
-      div.sec{
-        margin :  (($fontSize-large - $fontSize-medium) / 4 ) 0;
-        font-size: $fontSize-medium;
+      div.hour, div.min { font-size: $fontSize-medium; }
+      div.sec {
+        margin :  (($fontSize-medium - $fontSize) / 4 ) 0;
       }
     }
     & > div.semicolon {
       float: left;
-      margin: $unit-small 0;
+      margin: $unit / 4 0;
       width: $unit;
-      font-size: $fontSize-large;
+      font-size: $fontSize-medium;
       text-align: center;
     }
   }

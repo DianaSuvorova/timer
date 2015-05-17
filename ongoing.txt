@@ -5,3 +5,8 @@ Maybe needs a better approach. Alternatively I need to require them on every pag
 Known issues:
   Gulp:
     cleanDev works when an only task executed and doesn't as part of prod task
+
+TODO:
+  make gulp error on react error;
+  smthng going on with gulp watch css
+  react-router mb fix hash  location

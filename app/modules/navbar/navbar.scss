@@ -1,34 +1,27 @@
 //div.profile {text-align: right;float: right;div { padding-left: $unit / 1.5;border-bottom: $border;margin: $unit-small $unit;}}
 
 div#navbar {
-  position: fixed;
   width: 100%;
   height: $unit * 2.5;
-  & > div.routines, div.timer {
-    cursor: pointer;
+  a {
     float: left;
-    margin: $unit-small $unit;
+    margin: $unit / 2 $unit;
     padding-right: $unit / 1.5;
-  }
-  &.light {
-    & > div.timer {
+    color: lightgray;
+    border-bottom: $border-lightgray;
+    &.active {
       color: black;
       border-bottom: $border;
-    } 
-    & > div.routines {
-      border-bottom: $border-lightgray;
-      color: lightgray;
     }
   }
   &.dark {
-    background-color: black;
-    & > div.timer {
+    a {
       border-bottom: $border-lightgray;
       color: lightgray;
+      &.active {
+        color: white;
+        border-bottom: $border-white;        
+      }
     } 
-    & > div.routines {
-      color: white;
-      border-bottom: $border-white;
-    }
   }
 }
