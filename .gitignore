@@ -2,7 +2,6 @@
 /.nodemonignore
 /node_modules/
 /.sass-cache/
-/dist/*
+/dist/
 npm-debug.log
-app/build/react/
 /Timer/

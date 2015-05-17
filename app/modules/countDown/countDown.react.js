@@ -40,12 +40,12 @@ var countdown = React.createClass({
   },
 
   render: function () {
-    var pauseClass = classNames({
+    var pauseClass = ClassNames({
       'pause': true,
       'active': this.state.count
     });
 
-    var startClass = classNames({
+    var startClass = ClassNames({
       'start': true,
       'active': !this.state.count
     });

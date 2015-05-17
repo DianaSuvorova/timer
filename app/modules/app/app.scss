@@ -4,3 +4,21 @@
 @import "../content/content.scss";
 @import "../countDown/countDown.scss";
 @import "../routines/routines.scss";
+
+div#app {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background-color: white;
+  color: black;
+  overflow: hidden;
+  &.dark {
+    background-color: black;
+    color: white;
+  }
+  & > div.content {
+    width: 100%;
+    height: calc(100% - #{$unit * 2.5});
+    margin: 0 $unit;
+  }
+}
