@@ -8,6 +8,8 @@ $line-height: $unit;
 $fontSize: 1rem;
 $fontSize-large: 2 * $fontSize;
 $fontSize-medium: 1.5 * $fontSize;
+$transition-time: 0.2s;
+$transition-method: ease-in-out;
 
 html, body {
   width: 100%;
@@ -22,6 +24,28 @@ a {
   text-decoration:none;
   color: inherit;
   display: inline-block;
+}
+
+input {
+  border: none;
+  &:focus {
+    outline: none;
+    border-bottom: $border-lightgray;
+  }
+}
+
+button {
+  border: none;
+  background-color: lightgray;
+  &:focus { outline: none; }
+}
+
+@mixin transition($transition-property) {
+  -webkit-transition: $transition-property $transition-time $transition-method;
+  -moz-transition: $transition-property $transition-time $transition-method;
+  -ms-transition: $transition-property $transition-time $transition-method;
+  -o-transition: $transition-property $transition-time $transition-method;
+  transition: $transition-property $transition-time $transition-method;
 }
 
 .item-1 {
