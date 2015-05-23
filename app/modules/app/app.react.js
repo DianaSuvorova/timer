@@ -1,7 +1,10 @@
 React = require('react');
-jQuery = require('jquery'); //not used anywhere yet.
+var $ = require('jquery-browserify');
 ClassNames = require('classnames');
 Router = require('react-router');
+Parse = require('parse').Parse;
+
+Parse.initialize("SLnd1zLozFTpIesfrsWOfUM9SL5UnUdQyuI4KiJz", "JRj9hIHiTayn0y8DUyxANwD9hf7G1P2l45xQIo0t");
 
 
 var Navbar = require('./../navbar/navbar.react');

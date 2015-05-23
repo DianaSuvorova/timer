@@ -1,6 +1,5 @@
 1. So far I am setting React and jQuery in app as global vars..
 Maybe needs a better approach. Alternatively I need to require them on every page
-2. jQuery needs this weird wrapping. Need to look for a better approach
 
 Known issues:
   Gulp:

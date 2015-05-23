@@ -1,0 +1,31 @@
+div#profile {
+  cursor: pointer;
+  float: right;
+  width: $unit * 6;
+  & > div {
+    height: calc(#{$unit} + 1px);
+    overflow: hidden;
+    margin: 0 $unit;
+    @include transition(height);
+    & > span {
+      text-align: right;
+      height: $unit;
+      display: block;
+      padding-left: $unit / 1.5;
+      border-bottom: $border;
+    }
+    form {
+      height: $unit * 4;
+      width: 100%;
+      input { text-align: center; }
+      button {
+        cursor: pointer;
+        width : 100%;
+        text-align: center;
+      }
+    }
+    &.expanded {
+      height: $unit * 5;
+    }
+  }
+}
