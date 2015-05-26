@@ -5,6 +5,7 @@ div#routines {
     display: inline-block;
     height: 100%;
     &.navigation {
+      cursor: pointer;
       width: $unit;
       & > div {
         line-height: $fontSize-large;

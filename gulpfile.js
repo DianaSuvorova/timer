@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var notify = require('gulp-notify');
 var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
@@ -15,10 +16,10 @@ var clean = require('gulp-clean');
 var path = {
   HTML: './app/index.html',
   DEST: 'dist/',
-  JS_ENTRY_POINT: './app/modules/app/app.react.js',
+  JS_ENTRY_POINT: './app/components/app/app.react.js',
   JS_OUT: 'build.js',
   JS_MINIFIED_OUT: 'build.min.js',
-  SASS_ENTRY_POINT: './app/modules/app/app.scss',
+  SASS_ENTRY_POINT: './app/components/app/app.scss',
   SASS_OUT: 'build.css',
   SASS_MINIFY_OUT: 'build.min.css',
   ASSETS: ['./node_modules/font-awesome/fonts/**']
@@ -33,6 +34,19 @@ gulp.task('copyAssets', function( ){
   gulp.src(path.ASSETS)
     .pipe(gulp.dest(path.DEST + '/assets'));
 });
+
+
+gulp.task('less', function () {
+  var l = less({});
+  l.on('error',function(e){
+    gutil.log(e);
+    l.end();
+  });
+  return gulp.src('main.less')
+    .pipe(l)
+    .pipe(gulp.dest('.tmp/'));
+});
+
 
 gulp.task('css', function() {
   return gulp.src(path.SASS_ENTRY_POINT)
@@ -59,12 +73,14 @@ gulp.task('js', function() {
   .pipe(gulp.dest(path.DEST));
 });
 
-gulp.task('watch', function() {
-  gulp.watch(path.HTML, ['copyHTML']);
-  gulp.watch('./app/modules/**/*.scss', ['css']);
+gulp.task('watch', ['copyHTML'], function() {
+  gulp.watch('./app/components/**/*.scss', ['css']);
 
   return watchify(preprocessJS).on('update', function () {
     preprocessJS.bundle()
+      .on("error", notify.onError(function (error) {
+        return "Message to the notifier: " + error.message;
+      }))
       .pipe(source(path.JS_OUT))
       .pipe(gulp.dest(path.DEST));
       console.log('updated');
