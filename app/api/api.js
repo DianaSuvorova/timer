@@ -6,13 +6,13 @@ var Api = {
     getRoutineDataAtIndex: function(index) {
         var Routines = Parse.Object.extend('Routines');
         var Query = new Parse.Query(Routines);
-        var onSuccess = function (routine) {
+        var onSuccess = function (response) {
           Dispatcher.dispatch({
-            actionType: Constants.API_GET_ROUTINE_DATA,
-            routine: assign(routine || {}, {index: index})
+            actionType: Constants.API_LOAD_ROUTINE_DATA_SUCCESS,
+            routine: assign(response || {}, {index: index})
           });
         };
-        var onError = function (error) {
+        var onError = function (xhr) {
           console.log(error);
         };
         Query.skip(index).first().then(onSuccess, onError);

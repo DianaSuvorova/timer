@@ -3,14 +3,16 @@ var Constants = require('../constants/constants');
 var Api = require('../api/api');
 
 var routineActions = {
-    getNext: function(index) {
-      Api.getRoutineDataAtIndex(index + 1);
-  },
+    loadData: function(index) {
+      Api.getRoutineDataAtIndex(index);
+    },
 
-    getPrevious: function(index) {
-      Api.getRoutineDataAtIndex(index - 1);
-  },
-
+    updateCurrentRoutineData: function (index) {
+      Dispatcher.dispatch({
+        actionType: Constants.UPDATE_CURRENT_ROUTINE_DATA,
+        index: index
+      });
+    }
 };
 
 module.exports = routineActions;

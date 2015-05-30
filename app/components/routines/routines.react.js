@@ -2,18 +2,19 @@ var RoutineActions = require('../../actions/routineActions');
 var RoutineStore = require('../../stores/routineStore');
 var assign = require('object-assign');
 
-function getRoutineState() {
-  return  RoutineStore.getRoutine();
+function getRoutineState () {
+  return  RoutineStore.getCurrentRoutine();
 }
 
 var routines = React.createClass({
 
   getInitialState: function () {
-    return getRoutineState();
+    return {content: 'loading...'};
   },
 
   componentDidMount: function () {
     RoutineStore.addChangeListener(this._onChange);
+    RoutineActions.loadData(0);
   },
 
   componentWillUnmount: function () {
@@ -41,11 +42,14 @@ var routines = React.createClass({
   },
 
   _onClickLeft: function () {
-    RoutineActions.getPrevious(this.state.index);    
+    if (RoutineStore.getAtIndex(this.state.index - 1)) RoutineActions.updateCurrentRoutineData(this.state.index - 1);
+    else RoutineActions.loadData(this.state.index - 1);    
   },
 
   _onClickRight: function () {
-    RoutineActions.getNext(this.state.index);    
+    if (RoutineStore.getAtIndex(this.state.index + 1)) RoutineActions.updateCurrentRoutineData(this.state.index + 1);
+    else RoutineActions.loadData(this.state.index + 1 );    
+    
   }
 
 });
