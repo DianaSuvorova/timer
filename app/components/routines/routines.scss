@@ -1,26 +1,13 @@
 div#routines {
   width: calc(100% - #{$unit * 2});
   height: 100%;
-  & > div {
-    display: inline-block;
-    height: 100%;
-    &.navigation {
-      cursor: pointer;
-      width: $unit;
-      & > div {
-        line-height: $fontSize-large;
-        .fa { font-size: $fontSize-medium; }
-      }
-    }
-    &.content {
-      width: calc( 100% - #{$unit * 2}); 
-      & > div {
-        font-size: $fontSize-medium;
-        line-height: $fontSize-medium * 1.5;
-        width: 100%;
-        height: 100%;        
-        text-align: center;
-      }
-    }
-  }
+  display: flex;
+  align-items : center;
+   & > div {
+      padding: $unit;
+      font-size: $fontSize-medium;
+      line-height: $fontSize-medium * 1.5;
+      text-align: center;
+    &.navigation { cursor: pointer; }
+   }
 }

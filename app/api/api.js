@@ -9,7 +9,7 @@ var Api = {
         var onSuccess = function (response) {
           Dispatcher.dispatch({
             actionType: Constants.API_LOAD_ROUTINE_DATA_SUCCESS,
-            routine: assign(response || {}, {index: index})
+            routine: response ? assign(response.attributes, {index: index}) : null
           });
         };
         var onError = function (xhr) {

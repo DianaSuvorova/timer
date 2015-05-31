@@ -43,7 +43,7 @@ module.exports = function (grunt) {
       },
       css: {
         files: ['app/components/**/*.scss'],
-        tasks: ['sass']
+        tasks: ['sass', 'replace']
       },
       options: {
         nospawn: true

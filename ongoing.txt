@@ -1,5 +1,4 @@
-1. So far I am setting React and jQuery in app as global vars..
-Maybe needs a better approach. Alternatively I need to require them on every page- which might be even better approach as I think about it.
+1. So far I am setting React and jQuery in app as global vars..  I should change it to ewquire on every single page I need it really
 
 TODO:
   react-router mb fix hash location

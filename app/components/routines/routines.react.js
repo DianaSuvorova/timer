@@ -6,15 +6,20 @@ function getRoutineState () {
   return  RoutineStore.getCurrentRoutine();
 }
 
+function getRoutineAtIndex (index) {
+  if (RoutineStore.getAtIndex(index)) RoutineActions.updateCurrentRoutineData(index);
+  else RoutineActions.loadData(index);
+}
+
 var routines = React.createClass({
 
   getInitialState: function () {
-    return {content: 'loading...'};
+    return {Content: 'loading...'};
   },
 
   componentDidMount: function () {
     RoutineStore.addChangeListener(this._onChange);
-    RoutineActions.loadData(0);
+    getRoutineAtIndex(0);
   },
 
   componentWillUnmount: function () {
@@ -25,13 +30,13 @@ var routines = React.createClass({
     return (
       <div id = 'routines'>
         <div className = 'navigation left' onClick = {this._onClickLeft}>
-          <div><i className="fa fa-long-arrow-left"></i></div>
+          <i className="fa fa-long-arrow-left"></i>
         </div>
         <div className= 'content'>
-          <div> {this.state.content} </div>
+          {this.state.content}
         </div>
         <div className = 'navigation right' onClick = {this._onClickRight}>
-          <div><i className="fa fa-long-arrow-right"></i></div>
+          <i className="fa fa-long-arrow-right"></i>
         </div>
       </div>
     );
@@ -42,14 +47,11 @@ var routines = React.createClass({
   },
 
   _onClickLeft: function () {
-    if (RoutineStore.getAtIndex(this.state.index - 1)) RoutineActions.updateCurrentRoutineData(this.state.index - 1);
-    else RoutineActions.loadData(this.state.index - 1);    
+    getRoutineAtIndex(this.state.index - 1);
   },
 
   _onClickRight: function () {
-    if (RoutineStore.getAtIndex(this.state.index + 1)) RoutineActions.updateCurrentRoutineData(this.state.index + 1);
-    else RoutineActions.loadData(this.state.index + 1 );    
-    
+    getRoutineAtIndex(this.state.index + 1);        
   }
 
 });

@@ -22,7 +22,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-env": "^0.4.4",
     "grunt-replace": "^0.9.2",
-    "grunt-string-replace": "^1.2.0",
     "jquery-browserify": "^1.8.1",
     "key-mirror": "^1.0.0",
     "object-assign": "^2.0.0",

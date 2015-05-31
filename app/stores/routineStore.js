@@ -10,12 +10,7 @@ var _routines = [];
 var _currentRoutine = {};
 
 function add (routine) {
-  if (! _routines[routine.index])
-  _routines[routine.index] = {
-    content: (routine.attributes) ? routine.attributes.Content : null,
-    author: (routine.attributes) ? routine.attributes.Author : null,
-    index: routine.index
-  };
+  if (! _routines[routine.index]) _routines[routine.index] = routine;
 }
 
 function setCurrentRoutine (index) {
@@ -53,8 +48,11 @@ var RoutineStore = assign({}, EventEmitter.prototype, {
 Dispatcher.register( function (action) {
   switch(action.actionType) {
     case Constants.API_LOAD_ROUTINE_DATA_SUCCESS:
-      add(action.routine);
-      setCurrentRoutine(action.routine.index);
+      if (action.routine) {
+        add(action.routine);
+        setCurrentRoutine(action.routine.index);
+      }
+      else setCurrentRoutine(0);
       RoutineStore.emitChange();
       break;
 
