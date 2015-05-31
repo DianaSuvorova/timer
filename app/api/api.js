@@ -13,7 +13,7 @@ var Api = {
           });
         };
         var onError = function (xhr) {
-          console.log(error);
+          console.log(xhr);
         };
         Query.skip(index).first().then(onSuccess, onError);
     }
