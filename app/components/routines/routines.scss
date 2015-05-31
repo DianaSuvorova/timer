@@ -1,0 +1,13 @@
+div#routines {
+  width: calc(100% - #{$unit * 2});
+  height: 100%;
+  display: flex;
+  align-items : center;
+   & > div {
+      padding: $unit;
+      font-size: $fontSize-medium;
+      line-height: $fontSize-medium * 1.5;
+      text-align: center;
+    &.navigation { cursor: pointer; }
+   }
+}

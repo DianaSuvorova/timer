@@ -48,16 +48,3 @@ button {
   transition: $transition-property $transition-time $transition-method;
 }
 
-.item-1 {
-  @extend .col-md-1;
-  @extend .col-xs-6;
-  @extend .hidden-xs;
-  @extend .hidden-sm;
-}
-
-.item-2 {
-  @extend .col-md-2;
-  @extend .col-xs-6;
-  @extend .hidden-xs;
-  @extend .hidden-sm;
-}

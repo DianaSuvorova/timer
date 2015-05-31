@@ -20,14 +20,10 @@ var profile = React.createClass({
     user.set('username', username);
     user.set('password', password);
 
-    user.signUp(null, {
-      success: function(user) {
-        console.log('User "' + username + '" successfully created!');
-      },
-      error: function(user, error) {
-        console.warn("Error: " + error.code + " " + error.message);
-      }
-    });
+    var onSuccess = function (user) {console.log('User "' + username + '" successfully created!');};
+    var onError = function (error) {console.warn("Error: " + error.code + " " + error.message);};
+
+    user.signUp().then(onSuccess, onError);
   },
 
   render: function () {
