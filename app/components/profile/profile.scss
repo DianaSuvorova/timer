@@ -15,7 +15,6 @@ div#profile {
       border-bottom: $border;
     }
     form {
-      height: $unit * 4;
       width: 100%;
       input { text-align: center; }
       button {
@@ -23,9 +22,36 @@ div#profile {
         width : 100%;
         text-align: center;
       }
+      div.error {
+        @include transition(height);
+        height: 0;
+        line-height: $unit/2;
+        font-size: $fontSize-message;
+        font-family: $fontFamily-message;
+        text-align: center;
+        text-overflow: ellipsis;
+        &.active{ height: $unit; }
+      }
     }
-    &.expanded {
-      height: $unit * 5;
+  &.sign-in.expanded {
+      height: $unit * 4;
+    }
+   &.register.expanded{
+      height: $unit * 6;
     }
   }
 }
+
+div#navbar.dark > div#profile {
+  & > div {
+    & > span {
+      border-bottom: $border-lightgray;
+    }
+    form {
+      input { 
+        background-color: black;
+        color: lightgray; 
+      }
+    }
+  }
+} 

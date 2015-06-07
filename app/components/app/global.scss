@@ -10,6 +10,9 @@ $fontSize-large: 2 * $fontSize;
 $fontSize-medium: 1.5 * $fontSize;
 $transition-time: 0.2s;
 $transition-method: ease-in-out;
+$fontFamily-message: "Courier New";
+$fontSize-message: $fontSize * 0.7;
+
 
 html, body {
   width: 100%;
