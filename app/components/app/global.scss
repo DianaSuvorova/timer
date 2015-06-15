@@ -51,3 +51,25 @@ button {
   transition: $transition-property $transition-time $transition-method;
 }
 
+@mixin stopWatchTools() {
+  height: $line-height;
+  margin-left: $unit * 6;
+  margin-top: $unit / 2; 
+  & > div {
+    width: $unit * 1.5;
+    margin-right: $unit / 2; 
+    display: inline-block;
+    border-top: $border-bold-lightgray;
+    color: lightgray;
+    .fa {
+      padding-left: 5px;
+      color: lightgray;
+    }
+    &.active {
+      cursor: pointer;
+      border-top: $border-bold;
+      color: black;
+      i.fa { color: red; }      
+    }
+  }
+}

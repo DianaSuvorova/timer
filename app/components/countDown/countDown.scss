@@ -1,70 +1,54 @@
 div#countDown {
-  width: $unit * 12; 
-  div.header {
-   height: calc(#{$line-height} + 3px);
-   & > div {
-      width: $unit * 2;
-      display: inline-block;
-      margin-right: $unit;
-      border-bottom: $border-bold;
+  width: 100%;
+  div.watch {
+    width: $unit * 12; 
+    div.header {
+     height: calc(#{$line-height} + 3px);
+     & > div {
+        width: $unit * 2;
+        display: inline-block;
+        margin-right: $unit;
+        border-bottom: $border-bold;
+      }
     }
-  }
-  div.value {
-    height: $line-height * 2;
-    div.digit {
-      text-align: center;
-      width: $unit * 2;
-      float: left;
-      margin: $unit / 4 0;
-      div.tools {
-        margin: $unit / 8 0;
-        width: $unit;
-        float: right;
-        & > div {
-          cursor: pointer;
-          color: red;
-          line-height: $fontSize-medium / 2;
+    div.value {
+      height: $line-height * 2;
+      div.digit {
+        text-align: center;
+        width: $unit * 2;
+        float: left;
+        margin: $unit / 4 0;
+        div.tools {
+          margin: $unit / 8 0;
+          width: $unit;
+          float: right;
+          & > div {
+            cursor: pointer;
+            color: red;
+            line-height: $fontSize-medium / 2;
+          }
+        }
+        div.hour, div.min, div.sec {
+          float: left;
+          width: $unit * 2 - $unit;
+          span.zero {color: lightgray;}
+        }
+        div.hour, div.min { font-size: $fontSize-medium; }
+        div.sec {
+          margin :  (($fontSize-medium - $fontSize) / 4 ) 0;
         }
       }
-      div.hour, div.min, div.sec {
+      & > div.semicolon {
         float: left;
-        width: $unit * 2 - $unit;
-        span.zero {color: lightgray;}
+        margin: $unit / 4 0;
+        width: $unit;
+        font-size: $fontSize-medium;
+        text-align: center;
       }
-      div.hour, div.min { font-size: $fontSize-medium; }
-      div.sec {
-        margin :  (($fontSize-medium - $fontSize) / 4 ) 0;
-      }
-    }
-    & > div.semicolon {
-      float: left;
-      margin: $unit / 4 0;
-      width: $unit;
-      font-size: $fontSize-medium;
-      text-align: center;
     }
   }
   & > div.tools {
-    width: 100%;
-    height: $line-height;
-    margin-left: $unit * 6;
-    margin-top: $unit / 2; 
-    & > div {
-      width: $unit * 1.5;
-      margin-right: $unit / 2; 
-      display: inline-block;
-      border-top: $border-bold-lightgray;
-      color: lightgray;
-      .fa {
-        padding-left: 5px;
-        color: lightgray;
-      }
-      &.active {
-        cursor: pointer;
-        border-top: $border-bold;
-        color: black;
-        i.fa { color: red; }      
-      }
-    }
+    width: 100%; 
+    @include stopWatchTools(); 
   }
 }

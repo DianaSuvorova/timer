@@ -4,7 +4,7 @@ var UserStore = require('../../stores/userStore');
 var assign = require('object-assign');
 
 function getUserState () {
-  var userSate = UserStore.getUserSate();
+  var userSate = UserStore.getUserState();
   return  assign(
       userSate,
       {registerDialogOpen: (userSate.registerError) ? true : false,

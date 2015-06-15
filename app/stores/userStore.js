@@ -9,9 +9,11 @@ var CHANGE_EVENT = 'change';
 var _user = {};
 var _registerError = null;
 var _signInError = null;
+var _userObject = null;
 
-function setUser (user) {
+function setUser (user, userObject) {
     _user = user;
+    _userObject = userObject;
     _registerError = null;
     _signInError = null;
 }
@@ -25,13 +27,17 @@ function setSignInError (error) {
 }
 
 var userStore = assign({}, EventEmitter.prototype, {
-  getUserSate: function () {
+  getUserState: function () {
     return {
       username: _user.username,
       email: _user.email,
       registerError: _registerError,
       signInError: _signInError
     };
+  },
+
+  getUserObject: function () {
+    return _userObject;
   },
 
   emitChange: function () {
@@ -51,7 +57,7 @@ var userStore = assign({}, EventEmitter.prototype, {
 Dispatcher.register( function (action) {
   switch(action.actionType) {
     case Constants.API_SET_USER_SUCCESS:
-      setUser(action.user);
+      setUser(action.user, action.userObject);
       userStore.emitChange();
       break;
     case Constants.API_SET_USER_REGISTER_ERROR:

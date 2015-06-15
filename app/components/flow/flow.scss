@@ -1,0 +1,53 @@
+div#flow {
+  width: 100%;
+  & > div.task {
+    width: 100%;
+    height: $unit * 6;
+    overflow: hidden;
+    & > div {
+      float: left;
+      border-top: $border;
+      padding-top: $unit;
+      &.label {
+        width: $unit * 2;
+        line-height: $fontSize-medium / 1.5;
+        text-align: left; 
+      }
+      &.task-input {
+        margin-left: $unit; 
+        width: calc( 100% - #{$unit * 5});
+        form {
+          width: $unit * 15;
+          input {
+            text-align: center; 
+            width: 100%;
+          }
+          div.tools {
+            float: right;
+            @include stopWatchTools();
+          }
+        }
+      }
+    }
+  }
+  & > div.history {
+    & > div {
+      float: left;
+      border-top: $border;
+      padding-top: $unit; 
+      &.list {
+        width: $unit * 2;
+      }
+      &.tasks {
+        margin-left: $unit; 
+        width: calc( 100% - #{$unit * 5});
+      }
+      &.list, &.tasks {
+        & > span {
+          display: block;
+          width: 100%;
+        }
+      } 
+    }
+  } 
+}

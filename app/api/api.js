@@ -26,7 +26,8 @@ var Api = {
     var user = Parse.User.current();
     if (user) Dispatcher.dispatch({
       actionType: Constants.API_SET_USER_SUCCESS,
-      user: user.attributes
+      user: user.attributes,
+      userObject: user
     });
   },
 
@@ -36,10 +37,11 @@ var Api = {
     user.set('email', email);
     user.set('password', password);
 
-    var onSuccess = function (response) {
+    var onSuccess = function (user) {
       Dispatcher.dispatch({
         actionType: Constants.API_SET_USER_SUCCESS,
-        user: response.attributes
+        user: response.attributes,
+        userObject: user
       });
     };
     var onError = function (xhr) {
@@ -53,10 +55,11 @@ var Api = {
   },
 
   signIn: function (username, password) {
-    var onSuccess = function (response) {
+    var onSuccess = function (user) {
       Dispatcher.dispatch({
         actionType: Constants.API_SET_USER_SUCCESS,
-        user: response.attributes
+        user: user.attributes,
+        userObject: user
       });
     };
     var onError = function (xhr) {
@@ -75,6 +78,39 @@ var Api = {
     });
   },
 
+  createTask: function (content, userObject) {
+    var Task = Parse.Object.extend('Task');
+    var task = new Task();
+
+    var onSuccess = function (task) {
+      Dispatcher.dispatch({
+        actionType: Constants.API_CREATE_TASK_SUCCESS,
+        task: task
+      });
+    };
+    var onError = function (task, error) {
+      console.log('error', task, error);
+    };
+
+    task.save({content: content, user: userObject}).then(onSuccess, onError);
+  },
+
+  getTasksForUser: function (userObject) {
+    var Task = Parse.Object.extend('Task');
+    var Query = new Parse.Query(Task);
+    Query.equalTo("user", userObject).descending('createdAt');
+    var onSuccess = function (tasks) {
+      Dispatcher.dispatch({
+        actionType: Constants.API_GET_TASKS_SUCCESS,
+        tasks: tasks
+      });
+    };
+    var onError = function (tasks, error) {
+      console.log('error', tasks, error);
+    };
+
+    Query.find().then(onSuccess, onError);
+  }
 
 };
 
