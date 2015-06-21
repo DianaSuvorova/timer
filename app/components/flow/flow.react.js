@@ -3,6 +3,29 @@ var FlowActions = require('../../actions/flowActions');
 var TaskStore = require('../../stores/taskStore');
 var UserStore = require('../../stores/userStore');
 
+var hoursDigMap = {
+  0: '',
+  1: 'One',
+  2: 'Two',
+  3: 'Three',
+  4: 'Four',
+  5: 'Five',
+  6: 'Six',
+  7: 'Seven',
+  8: 'Eight',
+  9: 'Nine',
+  10: 'Ten',
+};
+
+function formatTime (timestamp) {
+  return timestamp.getHours() + '.' + timestamp.getMinutes();
+}
+
+function formatDuration (endTime, startTime) {
+  var hours = Math.floor((endTime.getTime() - startTime.getTime()) / (1000 * 60 * 60));
+  var mins = Math.floor((endTime.getTime() - startTime.getTime()) / (1000 * 60));
+  return [hoursDigMap[hours], mins];
+}
 
 function getFlowState () {
   return {tasks: TaskStore.getTasks()};
@@ -12,10 +35,7 @@ var flow = React.createClass({
 
   getInitialState: function () {
     return {
-      tasks : [],
-      task: null,
-      taskPlannedDuration: null,
-      taskActualDuration: null
+      tasks : []
     };
   },
 
@@ -43,8 +63,24 @@ var flow = React.createClass({
       return <span key = {'task_num_'+ i } >{i}</span>
     });
 
+    var durationSpan = function (duration) {
+      return (<span className = 'duration'>
+        <span>{duration[0]}</span>
+        <span>{duration[1]}</span>
+      </span>);
+    }; 
+
     var tasks = this.state.tasks.map(function (task, i) {
-      return <span key = {'task_content_'+ i }>{task.content}</span>
+      return ( 
+        <div key = {'task'+ i }>
+          <span>{i}</span>
+           <span>{task.content}</span>
+           <span>{task.startTime ? formatTime(task.startTime) : '.' }</span>
+           <span>{task.endTime ? formatTime(task.endTime) : '.' }</span>
+           <span> {(task.endTime && task.startTime) ? durationSpan(formatDuration(task.endTime, task.startTime)) : '.' }
+           </span>
+        </div>
+      )
     });
 
     return (
@@ -62,7 +98,6 @@ var flow = React.createClass({
           </div>
         </div>
         <div className = 'history'>
-          <div className = 'list'> {numList} </div>
           <div className = 'tasks'> {tasks} </div>
         </div>
       </div>
@@ -74,13 +109,15 @@ var flow = React.createClass({
   },
 
   _onClickStart: function () {
-    var task = $('#input-task').find('input').val();
-    FlowActions.createTask(task, UserStore.getUserObject());
+    var content = $('#input-task').find('input').val();
+    var startTime = new Date();
+    FlowActions.createTask(content, startTime, UserStore.getUserObject());
     this.props.onClickStart();
   },
 
   _onClickPause: function () {
-    if (this.state.taskPlannedDuration) this.setState({taskActualDuration: this.state.taskPlannedDuration - this.props.getCountDownTime()})
+    var endTime = new Date();
+    FlowActions.updateTask(TaskStore.getCurrentTask(), {endTime: endTime});
     this.props.onClickPause();
   },
 

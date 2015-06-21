@@ -40,7 +40,7 @@ var Api = {
     var onSuccess = function (user) {
       Dispatcher.dispatch({
         actionType: Constants.API_SET_USER_SUCCESS,
-        user: response.attributes,
+        user: user.attributes,
         userObject: user
       });
     };
@@ -78,7 +78,7 @@ var Api = {
     });
   },
 
-  createTask: function (content, userObject) {
+  createTask: function (content, startTime, userObject) {
     var Task = Parse.Object.extend('Task');
     var task = new Task();
 
@@ -89,10 +89,22 @@ var Api = {
       });
     };
     var onError = function (task, error) {
-      console.log('error', task, error);
+      console.log('createTask error', task, error);
     };
 
-    task.save({content: content, user: userObject}).then(onSuccess, onError);
+    task.save({content: content, startTime: startTime, user: userObject}).then(onSuccess, onError);
+  },
+
+  updateTask: function (taskObject, attributes) {
+
+    var onSuccess = function (task) {
+      console.log(task);
+    };
+    var onError = function (task, error) {
+      console.log('updateTask error', task, error);
+    };
+
+    taskObject.save(attributes).then(onSuccess, onError);
   },
 
   getTasksForUser: function (userObject) {

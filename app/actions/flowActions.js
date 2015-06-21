@@ -4,12 +4,16 @@ var Api = require('../api/api');
 
 var flowActions = {
 
-  createTask: function (content, userObject) {
-   Api.createTask(content, userObject);
+  createTask: function (content, startTime, userObject) {
+   Api.createTask(content, startTime, userObject);
   },
 
   getTasksForUser: function (userObject) {
     Api.getTasksForUser(userObject);
+  },
+
+  updateTask: function (taskObject, attributes) {
+    Api.updateTask (taskObject, attributes);
   },
 
 };

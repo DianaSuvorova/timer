@@ -13,6 +13,7 @@ function setTasks (tasks) {
 }
 
 function addTask (task) {
+  _currentTask = task;
   _tasks.unshift(task);
 }
 
@@ -20,6 +21,10 @@ var taskStore = assign({}, EventEmitter.prototype, {
 
   getTasks: function () {
     return _tasks.map(function (task) {return task.attributes; });
+  },
+
+  getCurrentTask: function () {
+    return _currentTask;
   },
 
   emitChange: function () {
