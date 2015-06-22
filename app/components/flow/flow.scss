@@ -1,0 +1,75 @@
+div#flow {
+  width: calc(100% - #{$unit * 8});
+  margin: 0 $unit * 4;
+  & > div.task {
+    width: 100%;
+    height: $unit * 6;
+    overflow: hidden;
+    & > div {
+      float: left;
+      &.label {
+        display: none;
+        width: 100%;
+        text-align: left; 
+        border-bottom: $border;
+        font-family: $font-family-light;
+      }
+      &.task-input {
+        width: 100%;
+        form {
+          width: 100%;
+          height: auto;
+          input {
+            padding: $unit / 2  0;
+            font-size: $fontSize-medium;
+            text-align: center; 
+            width: 100%;
+            word-wrap: break-word;
+          }
+          div.tools {
+            margin-top: $unit;
+            float: right;
+            @include stopWatchTools();
+          }
+        }
+      }
+    }
+  }
+  & > div.history {
+    height: $unit * 9;
+    overflow: auto;
+    border-top: $border;
+    border-bottom: $border;
+    & > div.row {
+      display: flex;
+      span {
+        height: $unit ; 
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: left;
+        padding: 0 $unit/8;
+      }
+      span.num { 
+        width: 10%; 
+        font-family: $font-family-light;
+      }
+      span.content { 
+        width: 50%; 
+        font-family: $font-family-light;
+      }
+      span.interval { 
+        width: 20%;
+        font-family: $font-family-light;
+      }
+      span.duration { 
+        font-family: $font-family;
+        width: 20%;
+        & > span {
+          display: inline-block;
+          width : 40%;
+        }
+      }
+
+    }
+  } 
+}

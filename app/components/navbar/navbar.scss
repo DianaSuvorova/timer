@@ -1,15 +1,18 @@
 div#navbar {
-  width: 100%;
-  height: $unit * 2.5;
+  padding-top: $unit / 2;
+  height: $unit * 2;
   a {
     float: left;
-    margin: $unit / 2 $unit;
-    padding-right: $unit / 1.5;
+    margin-right: $unit * 2;
+    padding-right: $unit;
     color: lightgray;
     border-bottom: $border-lightgray;
     &.active {
       color: black;
-      border-bottom: $border;
+      border-bottom: $border-bold;
+    }
+    &:first-of-type {
+      width: $unit * 2;
     }
   }
   &.dark {
@@ -18,7 +21,7 @@ div#navbar {
       color: lightgray;
       &.active {
         color: white;
-        border-bottom: $border-white;        
+        border-bottom: $border-bold-white;        
       }
     } 
   }

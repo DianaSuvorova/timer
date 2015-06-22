@@ -1,7 +1,8 @@
 
 var footer = React.createClass({
   render: function () {
-    return <div>footer</div>;
+    var date = new Date();
+    return <div>{'© Black Format. ' + date.getFullYear()} </div>;
   }
 });
 

@@ -17,7 +17,7 @@ function setCurrentRoutine (index) {
   _currentRoutine = _routines[index];
 }
 
-var RoutineStore = assign({}, EventEmitter.prototype, {
+var routineStore = assign({}, EventEmitter.prototype, {
 
   getCurrentRoutine: function () {
     return _currentRoutine;
@@ -53,14 +53,14 @@ Dispatcher.register( function (action) {
         setCurrentRoutine(action.routine.index);
       }
       else setCurrentRoutine(0);
-      RoutineStore.emitChange();
+      routineStore.emitChange();
       break;
 
     case Constants.UPDATE_CURRENT_ROUTINE_DATA:
       setCurrentRoutine(action.index);
-      RoutineStore.emitChange();
+      routineStore.emitChange();
       break;
   }
 });
 
-module.exports = RoutineStore;
+module.exports = routineStore;

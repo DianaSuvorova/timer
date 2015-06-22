@@ -7,6 +7,7 @@ function getRoutineState () {
 }
 
 function getRoutineAtIndex (index) {
+  if (index < 0) index = RoutineStore.getAll().length - 1;
   if (RoutineStore.getAtIndex(index)) RoutineActions.updateCurrentRoutineData(index);
   else RoutineActions.loadData(index);
 }
