@@ -6,6 +6,7 @@ Router = require('react-router');
 var Navbar = require('./../navbar/navbar.react');
 var CountDown = require('./../countdown/countdown.react');
 var Routines = require('./../routines/routines.react');
+var Footer = require('./../footer/footer.react');
 
 var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
@@ -24,6 +25,7 @@ var app = React.createClass({
       <div id = 'app' className = {appClass}>
         <Navbar className = {appClass} />
         <div className = 'content'><RouteHandler/></div>
+        <div className = 'footer'><Footer/></div>
       </div>
       )
   }

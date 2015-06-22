@@ -67,12 +67,18 @@ module.exports = function (grunt) {
     },
 
     copy: {
-      asstes: {
+      fa: {
         expand: true,
         cwd: './node_modules/font-awesome/fonts/',
         src: '**',
         dest: 'dist/fonts/'
-      }
+      },
+      cinetype: {
+        expand: true,
+        cwd: './app/assets/fonts/cinetype/',
+        src: '**',
+        dest: 'dist/fonts/'
+      },
     },
 
     replace: {

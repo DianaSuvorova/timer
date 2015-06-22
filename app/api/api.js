@@ -43,7 +43,8 @@ var Api = {
         user: user.attributes,
         userObject: user
       });
-    };
+      this.getTasksForUser(user);
+    }.bind(this);
     var onError = function (xhr) {
       Dispatcher.dispatch({
         actionType: Constants.API_SET_USER_REGISTER_ERROR,
@@ -61,7 +62,8 @@ var Api = {
         user: user.attributes,
         userObject: user
       });
-    };
+      this.getTasksForUser(user);
+    }.bind(this);
     var onError = function (xhr) {
       Dispatcher.dispatch({
         actionType: Constants.API_SET_USER_SIGNIN_ERROR,
@@ -97,9 +99,7 @@ var Api = {
 
   updateTask: function (taskObject, attributes) {
 
-    var onSuccess = function (task) {
-      console.log(task);
-    };
+    var onSuccess = function (task) {};
     var onError = function (task, error) {
       console.log('updateTask error', task, error);
     };

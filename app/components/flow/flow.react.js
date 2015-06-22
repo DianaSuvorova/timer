@@ -4,7 +4,7 @@ var TaskStore = require('../../stores/taskStore');
 var UserStore = require('../../stores/userStore');
 
 var hoursDigMap = {
-  0: '',
+  0: 'Zero',
   1: 'One',
   2: 'Two',
   3: 'Three',
@@ -64,21 +64,27 @@ var flow = React.createClass({
     });
 
     var durationSpan = function (duration) {
-      return (<span className = 'duration'>
+      return (
+        <span className = 'duration'>
         <span>{duration[0]}</span>
         <span>{duration[1]}</span>
       </span>);
     }; 
 
+    var timeIntervalText = function (startTime, endTime) {
+      if (!startTime) return '';
+      else {
+        return formatTime(startTime) + '  __  ' +  ((endTime) ? formatTime(endTime) : '' );
+      }
+    };
+
     var tasks = this.state.tasks.map(function (task, i) {
       return ( 
-        <div key = {'task'+ i }>
-          <span>{i}</span>
-           <span>{task.content}</span>
-           <span>{task.startTime ? formatTime(task.startTime) : '.' }</span>
-           <span>{task.endTime ? formatTime(task.endTime) : '.' }</span>
-           <span> {(task.endTime && task.startTime) ? durationSpan(formatDuration(task.endTime, task.startTime)) : '.' }
-           </span>
+        <div key = {'task'+ i } className = 'row'>
+           <span className = 'num' >{(i + 1) + '.'}</span>
+           <span className = 'content' >{task.content}</span>
+           <span className = 'interval'>{timeIntervalText(task.startTime, task.endTime)}</span>
+            {(task.endTime && task.startTime) ? durationSpan(formatDuration(task.endTime, task.startTime)) : <span className = 'duration'></span> }
         </div>
       )
     });
@@ -91,15 +97,15 @@ var flow = React.createClass({
             <form id = 'input-task'>
               <input placeholder = 'What can you do with your time that is important?'/>
               <div className = 'tools'>
-                <div className = {pauseClass} onClick = {this._onClickPause}>Pause<i className="fa fa-long-arrow-right"></i></div>
+                <div className = {pauseClass} onClick = {this._onClickPause}>
+                  Stop<i className="fa fa-long-arrow-right"></i>
+                </div>
                 <div className = {startClass} onClick = {this._onClickStart}>Start<i className="fa fa-long-arrow-right"></i></div>  
               </div>
             </form>
           </div>
         </div>
-        <div className = 'history'>
-          <div className = 'tasks'> {tasks} </div>
-        </div>
+        <div className = 'history'> { (this.state.tasks.length)? {tasks} : "Things you was spending your time on."}</div>
       </div>
     );
   },
@@ -116,6 +122,7 @@ var flow = React.createClass({
   },
 
   _onClickPause: function () {
+    $('#input-task').find('input').val('');
     var endTime = new Date();
     FlowActions.updateTask(TaskStore.getCurrentTask(), {endTime: endTime});
     this.props.onClickPause();

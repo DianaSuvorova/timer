@@ -1,13 +1,13 @@
 div#countDown {
   width: 100%;
   div.watch {
-    width: $unit * 12; 
+    width: 100%;
     div.header {
      height: calc(#{$line-height} + 3px);
      & > div {
-        width: $unit * 2;
+        width: $unit * 3;
         display: inline-block;
-        margin-right: $unit;
+        margin-right: $unit * 2;
         border-bottom: $border-bold;
       }
     }
@@ -15,40 +15,37 @@ div#countDown {
       height: $line-height * 2;
       div.digit {
         text-align: center;
-        width: $unit * 2;
+        width: $unit * 3;
         float: left;
         margin: $unit / 4 0;
         div.tools {
-          margin: $unit / 8 0;
-          width: $unit;
-          float: right;
+          width: $unit * 1;
+          float: left;
           & > div {
             cursor: pointer;
             color: red;
-            line-height: $fontSize-medium / 2;
+            line-height: $fontSize-large / 2;
           }
         }
         div.hour, div.min, div.sec {
           float: left;
-          width: $unit * 2 - $unit;
+          width: $unit * 2;
           span.zero {color: lightgray;}
         }
-        div.hour, div.min { font-size: $fontSize-medium; }
-        div.sec {
-          margin :  (($fontSize-medium - $fontSize) / 4 ) 0;
-        }
+        div.hour, div.min { font-size: $fontSize-large; }
+        div.sec { margin :  (($fontSize-large - $fontSize) / 3 ) 0; }
       }
       & > div.semicolon {
         float: left;
         margin: $unit / 4 0;
-        width: $unit;
+        width: $unit * 2;
         font-size: $fontSize-medium;
         text-align: center;
       }
     }
   }
-  & > div.tools {
-    width: 100%; 
+  & > div.tools { 
+    padding-left: 10 * $unit;
     @include stopWatchTools(); 
   }
 }
