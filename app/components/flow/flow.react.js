@@ -105,7 +105,7 @@ var flow = React.createClass({
             </form>
           </div>
         </div>
-        <div className = 'history'> { (this.state.tasks.length)? {tasks} : "Things you was spending your time on."}</div>
+        <div className = 'history'> { (this.state.tasks.length)? tasks : "Things you was spending your time on."}</div>
       </div>
     );
   },

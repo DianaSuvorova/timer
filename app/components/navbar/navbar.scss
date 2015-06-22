@@ -1,5 +1,6 @@
 div#navbar {
-  height: $unit * 2.5;
+  padding-top: $unit / 2;
+  height: $unit * 2;
   a {
     float: left;
     margin-right: $unit * 2;
