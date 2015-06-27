@@ -7,6 +7,12 @@ div#routines {
       font-size: $fontSize-medium;
       line-height: $fontSize-medium * 1.5;
       text-align: center;
+    &.content {
+      div.author { 
+        padding: $unit;
+        font-size: $fontSize; 
+      } 
+    }
     &.navigation { cursor: pointer; }
    }
 }
