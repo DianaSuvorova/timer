@@ -1,9 +1,0 @@
-1. So far I am setting React and jQuery in app as global vars..  I should change it to ewquire on every single page I need it really
-2. Should actions be 1-1 to stores/views or neither? What is a good abstruction for a set of actions?
-
-TODO:
-  react-router mb fix hash location
-
-Sun. June/07
-- figure out sign in/out/register. 
-- Get/Set user's records
