@@ -60,6 +60,10 @@ div#flow {
       span.interval { 
         width: 20%;
         font-family: $font-family-light;
+        span.line {
+          padding: 0 $unit/3;
+          border-bottom: $border;
+        }
       }
       span.duration { 
         font-family: $font-family;

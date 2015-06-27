@@ -34,7 +34,8 @@ var routines = React.createClass({
           <i className="fa fa-long-arrow-left"></i>
         </div>
         <div className= 'content'>
-          {this.state.content}
+          <div className = 'routine'>{this.state.content}</div>
+          <div className = 'author'>{this.state.author}</div>
         </div>
         <div className = 'navigation right' onClick = {this._onClickRight}>
           <i className="fa fa-long-arrow-right"></i>

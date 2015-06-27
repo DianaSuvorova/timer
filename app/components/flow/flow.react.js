@@ -71,19 +71,16 @@ var flow = React.createClass({
       </span>);
     }; 
 
-    var timeIntervalText = function (startTime, endTime) {
-      if (!startTime) return '';
-      else {
-        return formatTime(startTime) + '  __  ' +  ((endTime) ? formatTime(endTime) : '' );
-      }
-    };
-
     var tasks = this.state.tasks.map(function (task, i) {
       return ( 
         <div key = {'task'+ i } className = 'row'>
            <span className = 'num' >{(i + 1) + '.'}</span>
            <span className = 'content' >{task.content}</span>
-           <span className = 'interval'>{timeIntervalText(task.startTime, task.endTime)}</span>
+           <span className = 'interval'>
+              <span>{(task.startTime) ? formatTime(task.startTime) : ''}</span>
+              <span className='line'></span>
+              <span>{(task.endTime) ? formatTime(task.endTime) : ''}</span>
+           </span>
             {(task.endTime && task.startTime) ? durationSpan(formatDuration(task.endTime, task.startTime)) : <span className = 'duration'></span> }
         </div>
       )
@@ -105,7 +102,7 @@ var flow = React.createClass({
             </form>
           </div>
         </div>
-        <div className = 'history'> { (this.state.tasks.length)? tasks : "Things you was spending your time on."}</div>
+        <div className = 'history'> { (this.state.tasks.length)? tasks : "Let us know what you are up to and we'll keep track of where your time is going."}</div>
       </div>
     );
   },
