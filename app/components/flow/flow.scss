@@ -41,13 +41,11 @@ div#flow {
     border-top: $border;
     border-bottom: $border;
     & > div.row {
-      display: flex;
       span {
+        display: inline-block;
         height: $unit ; 
         text-overflow: ellipsis;
-        overflow: hidden;
         text-align: left;
-        padding: 0 $unit/8;
       }
       span.num { 
         width: 10%; 

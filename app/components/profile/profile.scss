@@ -13,6 +13,8 @@ div#profile {
       display: block;
       padding-left: $unit / 1.5;
       border-bottom: $border;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     form {
       width: 100%;
